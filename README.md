@@ -1,6 +1,8 @@
 # SendGrid evaluation and API test
 The free plan supports webhooks, up to 12000 transactional emails per month, up
-to 2000 free contacts for marketing emails and has a nice NodeJS API.
+to 2000 free contacts for marketing emails and has a nice NodeJS API with a good
+documentation (the documentation is not very good but looks sufficient for what
+we want to do with it).
 
 [Here](https://sendgrid.com/docs/User_Guide/Transactional_Templates/create_edit.html)
 it is said that: `There is currently a limit of 300 templates and 300 versions
