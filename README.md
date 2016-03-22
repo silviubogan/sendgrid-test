@@ -1,4 +1,4 @@
-# SendGrid evaluation and API test
+# SendGrid evaluation and API test for jillix
 The free plan supports up to 12000 transactional emails per month, webhooks, up
 to 2000 free contacts for marketing emails and has a nice NodeJS API with [a
 good documentation](https://github.com/sendgrid/sendgrid-nodejs) ([the
