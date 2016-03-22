@@ -1,0 +1,26 @@
+{
+  "name": "sendgrid-test",
+  "version": "1.0.0",
+  "description": "Testing SendGrid NodeJS API.",
+  "main": "example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silviubogan/sendgrid-test.git"
+  },
+  "keywords": [
+    "test",
+    "SendGrid"
+  ],
+  "author": "Silviu Bogan <silviubogan@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silviubogan/sendgrid-test/issues"
+  },
+  "homepage": "https://github.com/silviubogan/sendgrid-test#readme",
+  "dependencies": {
+    "sendgrid": "^2.0.0"
+  }
+}
