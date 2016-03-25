@@ -22,9 +22,11 @@ var email = new sendgrid.Email({
     // Replaces "<%subject%>" in the template's body and subject:
     subject: 'Hello, World!',
     // Replaces "<%body%>" in the template's body and subject:
-    html: 'An email %substitution_verb% through SendGrid to %first_name%.'
-    // (If the `text` property is specified instead of `html`, the plain text
-    // version of the template is sent.)
+    text: 'An email %substitution_verb% through SendGrid to %first_name%.',
+    html: 'An email %substitution_verb% through SendGrid to <em>%first_name%</em>.'
+    // (If only the `text` property is specified instead of `html`, the plain
+    // text version of the template is always used and sent. The best is to
+    // specify both the `text` property and the `html` property.)
 });
 
 // Substitutions and sections are the suggested replacement of merge tags when
@@ -58,7 +60,10 @@ email.addSubstitution('%substitution_verb%', ['%verb%', '%verb%']);
 // The second recipient (B) will receive:
 //     An email sent through SendGrid to B.
 
-// Makes the email use a template
+// Makes the email use a template. Maybe we could use
+// https://sendgrid.com/docs/API_Reference/Web_API_v3/Transactional_Templates/templates.html
+// , the GET request to retrieve all templates, to obtain a template ID from a
+// template name to make it easier for us to work with templates.
 email.addFilter('templates', 'enable', 1);
 email.addFilter('templates', 'template_id', templateId);
 
