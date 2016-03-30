@@ -5,7 +5,7 @@ var apiKey = '';
 // The first email address used in the From email field and as a recipient.
 var target = '';
 // The second email address used as a second recipient.
-var target2 = ''
+var target2 = '';
 // The ID of the used SendGrid email template.
 var templateId = '';
 
