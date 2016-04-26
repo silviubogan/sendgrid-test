@@ -16,17 +16,29 @@ var sendgrid = require('sendgrid')(apiKey);
 // For substitution and section tags, instead of %X% you can use -X-, #X#, :X
 // etc. See https://sendgrid.com/docs/API_Reference/SMTP_API/section_tags.html
 
+// The `to`, `from` and `replyto` properties of the object passed as an argument
+// to the email constructor below can be simple email addresses or strings in
+// the following format: `"Example Name" <example@example.com>` where Example
+// Name is the name of the contact represented by the email address inside the
+// angle brackets.
 var email = new sendgrid.Email({
     to: [target, target2],
     from: target,
-    // Replaces "<%subject%>" in the template's body and subject:
+    // Must be at least a string with a single space character (must not be an
+    // empty string, otherwise it gives an error), replaces "<%subject%>" in the
+    // template's body and subject:
     subject: 'Hello, World!',
-    // Replaces "<%body%>" in the template's body and subject:
+    // Must be at least strings with a single space character (must not be empty
+    // strings, otherwise it gives an error), replaces "<%body%>" in the
+    // template's body and subject (If only the `text` property is specified
+    // instead of `html`, the plain text version of the template is always used
+    // and sent. The best is to specify both the `text` property and the `html`
+    // property.):
     text: 'An email %substitution_verb% through SendGrid to %first_name%.',
-    html: 'An email %substitution_verb% through SendGrid to <em>%first_name%</em>.'
-    // (If only the `text` property is specified instead of `html`, the plain
-    // text version of the template is always used and sent. The best is to
-    // specify both the `text` property and the `html` property.)
+    html: 'An email %substitution_verb% through SendGrid to <em>%first_name%</em>.',
+    // The email address to which the recipients will respond if they use the
+    // Reply button in their email clients:
+    replyto: target
 });
 
 // Substitutions and sections are the suggested replacement of merge tags when
@@ -35,7 +47,7 @@ var email = new sendgrid.Email({
 // first recipient and with "B" for the second recipient. Passing a single
 // string instead of an array does not work when there are multiple recipients,
 // because the recipients with the exception of the first will receive an empty
-// string for that substitution tag. There also exists the `addSubstitutions`
+// string for that substitution tag. There also exists the `setSubstitutions`
 // method which receives an object.
 email.addSubstitution('%first_name%', ['A', 'B']);
 
